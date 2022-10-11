@@ -1,0 +1,1 @@
+This command-line tool calculates the user-specified nth number in the Fibonacci Sequence. The user should specify the value of n as a command-line argument when they run the program.
