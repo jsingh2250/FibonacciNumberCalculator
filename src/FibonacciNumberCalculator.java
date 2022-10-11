@@ -189,7 +189,7 @@ public class FibonacciNumberCalculator {
             startTimeInMilliseconds = System.currentTimeMillis();
 
             // Calculate the Fibonacci number.
-            long fibonacciNumber = 0;
+            int fibonacciNumber = FibonacciNumber.getNthFibonacciNumber(number);
 
             // Store the current time in milliseconds.
             endTimeInMilliseconds = System.currentTimeMillis();
