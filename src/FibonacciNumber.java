@@ -18,16 +18,13 @@ public class FibonacciNumber {
         if (n == 0 || n == 1) {
             return n;
         }
-        // Get the number from the array list if it's already been stored.
-        else if ((n - 2) < fibonacciSequence.size()) {
-            return fibonacciSequence.get(n - 2);
-        }
-        // Recursively calculate and store the nth Fibonacci number.
-        else {
+        // Add the number to the array list if it hasn't already been stored.
+        if ((n - 2) >= fibonacciSequence.size()) {
+            // Recursively calculate and store the nth Fibonacci number.
             fibonacciSequence.add(getNthFibonacciNumber(n - 1) + getNthFibonacciNumber(n - 2));
-
-            // Return the specified nth number in the Fibonacci Sequence.
-            return fibonacciSequence.get(n - 2);
         }
+
+        // Return the stored specified nth number in the Fibonacci Sequence.
+        return fibonacciSequence.get(n - 2);
     }
 }

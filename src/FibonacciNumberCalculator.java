@@ -120,16 +120,21 @@ public class FibonacciNumberCalculator {
     * @return Returns the ordinal indicator for the specified number.
     */
     public static String getOrdinalIndicator(int number) {
-        switch (number) {
-            case 1:
-                return "st";
-            case 2:
-                return "nd";
-            case 3:
-                return "rd";
-            default:
-                return "th";
+        int onesPlace = number % 10;
+        int tensPlace = (number / 10) % 10;
+        // If the last two digits in the number aren't a teen number, use the last digit to determine if it gets a special ordinal indicator.
+        if (tensPlace != 1) {
+            switch (onesPlace) {
+                case 1:
+                    return "st";
+                case 2:
+                    return "nd";
+                case 3:
+                    return "rd";
+            }
         }
+        // Return the general ordinal indicator.
+        return "th";
     }
 
     /**
@@ -138,30 +143,31 @@ public class FibonacciNumberCalculator {
      * @param args User-specified number.
      * @throws Exception
      */
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
         // Store the name of this program as a string.
         final String PROGRAM_NAME = "Fibonacci Number Calculator";
-
+        
         // Store the valid commands the user can input as strings.
         final String RESTART_COMMAND = "restart";
 
         // Declare a variable to store whether the user wants to restart the program.
         boolean shouldRestartProgram = false;
-
+        
         // Create a scanner object to read user input.
         Scanner scanner = new Scanner(System.in);
-
+        
         // Declare a variable to store user input.
         String userInput = null;
-
+        
         // Declare a variable to store the user-specified number.
         Integer number = null;
-
+        
         // Try to parse a non-negative integer from the command line argument.
         try {
             // Try to get the command line argument.
             userInput = args[0];
-
+            
             // Try to parse a non-negative integer from the command line argument.
             number = Integer.parseInt(userInput);
             if (number < 0) {
